@@ -19,63 +19,77 @@ LinkedListOfAcidente::LinkedListOfAcidente()
 /**
  * Impressão da lista.
  */
-void LinkedListOfAcidente::ImprimeLista()
-{
+void LinkedListOfAcidente::ImprimeLista() {
     NodoAcidente *ptr;
-    if (head == NULL)
-    {
-        //printf("--- Lista de Acidentes desta rua esta Vazia\n");
-        return;
+    if (head == NULL) {
+      cout << "--- Lista de Acidentes desta rua esta Vazia\n" << endl;
+      return;
     }
     // Caso a lista nao esteja vazia
     ptr = head;
     while (true)
     {
-        cout << ptr->toString() << endl;
-        ptr = ptr->next;
-        if (ptr==NULL)
-            break;
+      cout << ptr->toString() << endl;
+      ptr = ptr->next;
+      if (ptr==NULL)
+        break;
     }
-    cout <<"--- Fim da lista ---" << endl;
+    cout << "--- Fim da lista ---" << endl;
 }
 
 /**
      * Retorna true se a lista nao contem elementos.
      * @return true se a lista nao contem elementos
      */
-bool LinkedListOfAcidente::isEmpty()
-{
-    return (head == NULL);
+bool LinkedListOfAcidente::isEmpty() {
+  return (head == NULL);
 }
 /**
      * Retorna o numero de elementos da lista.
      * @return o numero de elementos da lista
      */
 int LinkedListOfAcidente::size() {
-    return count;
+  return count;
 }
 /**
      * Esvazia a lista
      */
-void LinkedListOfAcidente::clear()
-{
-    NodoAcidente *ptr;
-    if (head == NULL)
-    {
-      printf("--- Lista já estava Vazia\n");
-      return;
-    }
+
+bool LinkedListOfAcidente::contains(string element){
+  NodoAcidente *ptr;
+  if (isEmpty())
+    return false; // Lista Vazia
+
+  // Caso a lista nao esteja vazia
+  ptr = head;
+  while (ptr != NULL) {
+    if (ptr->TipoAcidente == element) // achou !!
+      return true;               //
+    else
+      ptr = ptr->next; // avança para o próximo NodoSTR
+  }
+  return false;
+}
+
+
+void LinkedListOfAcidente::clear() {
+  NodoAcidente *ptr;
+  if (head == NULL) {
+    cout << "--- Lista já estava Vazia\n";
+    return;
+  }
     // Caso a lista nao esteja vazia
     // Apaga cada elemento
-    ptr = head;
-    NodoAcidente *aux;
-    while (true) {
-        aux = ptr;
-        ptr = ptr->next;
-        delete aux;
-        if (ptr==NULL)
-            break;
+  ptr = head;
+  NodoAcidente *aux;
+  while (true) {
+    aux = ptr;
+    ptr = ptr->next;
+    delete aux;
+    if (ptr==NULL)
+      break;
     }
+  
     head = NULL;
     tail = NULL;
     count = 0;
@@ -85,8 +99,7 @@ void LinkedListOfAcidente::clear()
      * Adiciona um elemento ao final da lista.
      */
 
-void LinkedListOfAcidente::add(string dia, int nVeiculos, int nMotos, string TipoAcidente)
-{
+void LinkedListOfAcidente::add(string dia, int nVeiculos, int nMotos, string TipoAcidente){
     NodoAcidente *n;
     n = new NodoAcidente(dia, nVeiculos, nMotos, TipoAcidente);
 
@@ -105,44 +118,41 @@ void LinkedListOfAcidente::add(string dia, int nVeiculos, int nMotos, string Tip
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
 
-NodoAcidente* LinkedListOfAcidente::get(int index)
-{
+NodoAcidente* LinkedListOfAcidente::get(int index) {
     if ((index < 0) || (index >= count)) {
-        throw IndexOutOfBoundsException;
+      throw IndexOutOfBoundsException;
     }
     if (index == count-1)
-        return tail;
-    
+      return tail;
     NodoAcidente *aux = head;
     int c = 0;
     while (c < index) {
-        aux = aux->next;
-        c++;
+      aux = aux->next;
+      c++;
     }
-    return (aux);
+    return aux;
 }
 /**
      * Gera uma string com itens da lista
      *  @return String com itens da lista separdos por vírgula
      */
-string LinkedListOfAcidente::toString()
-{
-    stringstream SS; // usado para converter inteiro para string
-    string S;
+string LinkedListOfAcidente::toString() {
+  stringstream SS; // usado para converter inteiro para string
+  string S;
     
-    NodoAcidente *aux = head;
+  NodoAcidente *aux = head;
 
-    if (isEmpty())
-        return S; // retorna uma string vazia.
+  if (isEmpty())
+    return S; // retorna uma string vazia.
+  for(int i=0; i<count-1; i++) {
+    SS << aux->toString() << ", ";
+    aux = aux->next;
+  }
     
-    for(int i=0; i<count-1; i++) {
-        SS << aux->toString() << ", ";
-        aux = aux->next;
-    }
-    SS << aux->toString();
+  SS << aux->toString();
     
-    S = SS.str();
-    return S;
+  S = SS.str();
+  return S;
 }
 
 
@@ -161,7 +171,7 @@ string LinkedListOfAcidente::toString()
  */
 bool LinkedListOfAcidente::remove(string TipoAcidente)
 {
-    // retorna false se a lista estiver vazia
+  // retorna false se a lista estiver vazia
     if (count == 0)
         return false;
     
@@ -201,5 +211,6 @@ bool LinkedListOfAcidente::remove(string TipoAcidente)
     }
     
     return false;
+  
 }
 

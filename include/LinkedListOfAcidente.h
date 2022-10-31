@@ -17,7 +17,7 @@ public:
     bool isEmpty();
     int size();
     void clear();
-    
+    bool contains(string element);
     NodoAcidente* get(int index);
     string toString();
     void add(string dia, int nVeiculos, int nMotos, string TipoAcidente);
