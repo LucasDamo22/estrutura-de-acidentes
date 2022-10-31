@@ -196,7 +196,7 @@ void LeArquivo(const char *filename)
     cout << "Leitura concluida" << endl;
     
     cout << "Lista de Ruas:" << endl;
-    ListaDeRuas.ImprimeLista();
+    //ListaDeRuas.ImprimeLista();
         
 }
 
@@ -205,7 +205,9 @@ int main(int argc, const char * argv[]) {
     //LeArquivo("DezLinhas.csv");
     //LeArquivo("./data/cat_vitimas2.csv");
     LeArquivo("./data/PequenoComRepeticoes.csv");
-
+    ListaDeRuas.ImprimeLista();
+    ListaDeRuas.RemoveAcidentes("QUEDA");
+    ListaDeRuas.ImprimeLista();
   
 
     return 0;

@@ -686,6 +686,8 @@ void LinkedListOfString::removeMaiores(string n)
 // Exercício E.1)
 void LinkedListOfString::RemoveAcidentes(string tipo)
 {
+    NodoSTR *ptr;
+    ptr = head;
     if (isEmpty())
         return; // encerra
 
@@ -695,8 +697,20 @@ void LinkedListOfString::RemoveAcidentes(string tipo)
         // Se o tipo de acidente for igual ao "tipo"
         // então remove o acidente.
         // Olhe o codigo do metodo ImprimeLista
+        ptr->AcidentesNaRua.remove(tipo);
+        ptr = ptr->next;
+        
     }
-
+    NodoSTR *ptr2;
+    ptr2 = head;
+    int i = 0;
+    while(ptr2->next != NULL){
+        i++;
+        if(ptr2->AcidentesNaRua.isEmpty()){
+            removeByIndex(i);
+        }
+        ptr2 = ptr2->next;
+    }
     // Testa se a lista de acidentes ficou vazia.
     // Se ficou, eh preciso remover a rua
 }
