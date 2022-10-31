@@ -147,13 +147,13 @@ void LinkedListOfString::add(string NomeDaRua, string dia, int nVeiculos,
 // Independente disto, depois, insere os dados do acidente na
 // lista AcidentesNaRua
 // Sugestão: veja o metodo getRef
-NodoSTR *ptr;
+    NodoSTR *ptr;
     NodoSTR *n = new NodoSTR(NomeDaRua);
-    
+    n->AcidentesNaRua.add(dia,  nVeiculos, nMotos, TipoAcidente);
     
     if (head == NULL)
     {   
-        n->AcidentesNaRua.add(dia,  nVeiculos, nMotos, TipoAcidente);
+        
         head = n;
         tail = n;
         count++;
@@ -161,7 +161,6 @@ NodoSTR *ptr;
     }
     else
     {
-
         ptr = head;
 
         while (true)
