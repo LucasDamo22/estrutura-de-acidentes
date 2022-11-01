@@ -732,3 +732,28 @@ int LinkedListOfString::num_acid_motos()
     }
     return num_acid_motos;
 }
+string LinkedListOfString::dia_mais_acidentes(string rua){
+    
+    string aux = rua;
+    
+    if (head==NULL){
+        
+        string a = "Rua sem acidentes";
+        return a;
+    }
+    NodoSTR *ptr;
+    ptr = head;
+    cout<<"aaaa";
+    
+    while(true){
+        if(ptr->element==aux){
+            cout<<"teste do if";
+            break;
+        }
+        ptr->next;
+        
+    }
+    string aux1 = ptr->AcidentesNaRua.dia_mais_acid();
+    return aux1;
+
+}

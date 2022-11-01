@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
 using namespace std;
 
 #include "LinkedListOfString.h"
@@ -204,12 +205,20 @@ int main(int argc, const char * argv[]) {
     
     //LeArquivo("DezLinhas.csv");
     //LeArquivo("./data/cat_vitimas2.csv");
-    LeArquivo("./data/PequenoComRepeticoes.csv");
     
-    //ListaDeRuas.RemoveAcidentes("QUEDA");
+     LeArquivo("./data/PequenoComRepeticoes.csv");
+    
+    ListaDeRuas.RemoveAcidentes("ABALROAMENTO");
     ListaDeRuas.ImprimeLista();
-    cout<<"numero de acidentes com moto"<<ListaDeRuas.num_acid_motos();
-  
-
+    //cout<<"numero de acidentes com moto"<<ListaDeRuas.num_acid_motos();
+   
+    cout<<"aaaaaaaaaaaa";
+    
+    string b = "aaaaa";
+    cout<<b;
+    string a = "R PROF CRISTIANO FISCHER";
+    cout<<a;
+    
+    ListaDeRuas.dia_mais_acidentes(a);
     return 0;
 }
