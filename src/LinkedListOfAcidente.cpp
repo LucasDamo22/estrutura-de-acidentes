@@ -213,4 +213,16 @@ bool LinkedListOfAcidente::remove(string TipoAcidente)
     return false;
   
 }
+int LinkedListOfAcidente::num_acid_moto(){
+    int numAcidMoto = 0;
+    NodoAcidente *ptr;
+    ptr = head;
+    while(ptr!=NULL){
+        if(ptr->nMotos>0){
+            numAcidMoto+=ptr->nMotos;
+        }
+        ptr = ptr->next;
+    }
+    return numAcidMoto;
+}
 

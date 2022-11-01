@@ -160,16 +160,16 @@ void LinkedListOfString::add(string NomeDaRua, string dia, int nVeiculos,
         NodoSTR *aux = head;
         for (i = 0; i < count; i++)
         {
-            if(aux->element==NomeDaRua)
-            break;
-            if (aux->element > NomeDaRua){
+            if (aux->element == NomeDaRua)
+                break;
+            if (aux->element > NomeDaRua)
+            {
                 add(i, NomeDaRua);
                 break;
             }
-                
+
             aux = aux->next;
         }
-        
 
         ptr = head;
 
@@ -687,27 +687,48 @@ void LinkedListOfString::removeMaiores(string n)
 void LinkedListOfString::RemoveAcidentes(string tipo)
 {
     NodoSTR *ptr;
-  ptr = head;
-  if (isEmpty())
-    return; // encerra
+    ptr = head;
+    if (isEmpty())
+        return; // encerra
 
-  while (ptr != NULL) {
+    while (ptr != NULL)
+    {
 
-    while (ptr->AcidentesNaRua.contains(tipo)) {
-      ptr->AcidentesNaRua.remove(tipo);
+        while (ptr->AcidentesNaRua.contains(tipo))
+        {
+            ptr->AcidentesNaRua.remove(tipo);
+        }
+
+        ptr = ptr->next;
     }
 
-    ptr = ptr->next;
-  }
-
-  ptr = head;
-  while(ptr!=NULL){
-    if(ptr->AcidentesNaRua.isEmpty()){
-        string aux;
-        aux = ptr->element;
-        remove(aux);
-}  
-ptr = ptr->next;
-
+    ptr = head;
+    while (ptr != NULL)
+    {
+        if (ptr->AcidentesNaRua.isEmpty())
+        {
+            string aux;
+            aux = ptr->element;
+            remove(aux);
+        }
+        ptr = ptr->next;
+    }
 }
+
+int LinkedListOfString::num_acid_motos()
+{
+    int num_acid_motos = 0;
+    NodoSTR *ptr;
+    ptr = head;
+    if (isEmpty())
+        return num_acid_motos; // encerra
+
+    while (ptr != NULL)
+    {
+
+        num_acid_motos += ptr->AcidentesNaRua.num_acid_moto();
+
+        ptr = ptr->next;
+    }
+    return num_acid_motos;
 }

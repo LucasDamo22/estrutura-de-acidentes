@@ -19,7 +19,7 @@ public:
     void clear();
     void add(string element);
     void add(string NomeDaRua, string dia, int nVeiculos, int nMotos, string TipoAcidente);
-    
+    int num_acid_motos();
     string get(int index);
     string toString();
     string set(int index, string element);

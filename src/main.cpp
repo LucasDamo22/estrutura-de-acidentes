@@ -206,8 +206,9 @@ int main(int argc, const char * argv[]) {
     //LeArquivo("./data/cat_vitimas2.csv");
     LeArquivo("./data/PequenoComRepeticoes.csv");
     
-    ListaDeRuas.RemoveAcidentes("QUEDA");
+    //ListaDeRuas.RemoveAcidentes("QUEDA");
     ListaDeRuas.ImprimeLista();
+    cout<<"numero de acidentes com moto"<<ListaDeRuas.num_acid_motos();
   
 
     return 0;

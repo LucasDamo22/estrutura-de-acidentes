@@ -17,6 +17,7 @@ public:
     bool isEmpty();
     int size();
     void clear();
+    int num_acid_moto();
     bool contains(string element);
     NodoAcidente* get(int index);
     string toString();
