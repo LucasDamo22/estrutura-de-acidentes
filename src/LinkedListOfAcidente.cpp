@@ -219,7 +219,7 @@ int LinkedListOfAcidente::num_acid_moto(){
     ptr = head;
     while(ptr!=NULL){
         if(ptr->nMotos>0){
-            numAcidMoto+=ptr->nMotos;
+            numAcidMoto++;
         }
         ptr = ptr->next;
     }
