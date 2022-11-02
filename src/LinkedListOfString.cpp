@@ -732,28 +732,129 @@ int LinkedListOfString::num_acid_motos()
     }
     return num_acid_motos;
 }
-string LinkedListOfString::dia_mais_acidentes(string rua){
-    
+string LinkedListOfString::dia_mais_acidentes(string rua)
+{
+
     string aux = rua;
-    
-    if (head==NULL){
-        
+
+    if (head == NULL)
+    {
+
         string a = "Rua sem acidentes";
         return a;
     }
     NodoSTR *ptr;
     ptr = head;
-    cout<<"aaaa";
-    
-    while(true){
-        if(ptr->element==aux){
-            cout<<"teste do if";
-            break;
-        }
-        ptr->next;
-        
-    }
-    string aux1 = ptr->AcidentesNaRua.dia_mais_acid();
-    return aux1;
 
+    while (ptr != NULL)
+    {
+        if (ptr->element == aux)
+        {
+            cout << "teste do if";
+            string aux1 = ptr->AcidentesNaRua.dia_mais_acid();
+            return aux1;
+        }
+        ptr = ptr->next;
+    }
+    return "Rua não encontrada";
+}
+
+string LinkedListOfString::Maiores20()
+{
+    if (head == NULL)
+    {
+        return "Lista Vazia";
+    }
+    cout << "pos if head" << endl;
+    NodoSTR *ptr;
+    ptr = head;
+    NodoSTR *maiores[count];
+    // ImprimeLista();
+    for (int i = 0; i < count; i++)
+    {
+        maiores[i] = ptr;
+        ptr = ptr->next;
+    }
+
+    NodoSTR *aux;
+    for (int i = 0; i < count - 1; i++)
+        for (int j = i + 1; j < count; j++)
+        {
+            aux = maiores[i];
+
+            if (maiores[j]->AcidentesNaRua.size() > maiores[i]->AcidentesNaRua.size())
+            {
+                maiores[i] = maiores[j];
+                maiores[j] = aux;
+            }
+        }
+    stringstream ss1;
+    for (int z = 0; z < 20; z++)
+    {
+        ss1 << maiores[z]->element << endl;
+        ;
+    }
+    return ss1.str();
+}
+
+string LinkedListOfString::maioresacidentes10()
+{
+    if (head == NULL)
+    {
+        return "Lista Vazia";
+    }
+    int qtdacidentes = 0;
+    NodoSTR *ptr;
+    ptr = head;
+    cout << "1" << endl;
+    for (int i = 0; i < count; i++)
+    {
+
+        qtdacidentes += ptr->AcidentesNaRua.size();
+        ptr = ptr->next;
+    }
+    cout << qtdacidentes << endl;
+    ptr = head;
+    cout << "2" << endl;
+    NodoAcidente *maiores[qtdacidentes];
+    NodoAcidente *ptrInterno;
+    while (ptr != NULL)
+    {
+        cout << "init while" << endl;
+        ptrInterno = ptr->AcidentesNaRua.getHead();
+        cout << "get head da lista de acid" << endl;
+        int i = 0;
+        while (ptrInterno != NULL)
+        {
+            maiores[i] = ptrInterno;
+            cout << "atribuicao de tds acidentes" << endl;
+            ptrInterno = ptrInterno->next;
+            i++;
+        }
+        ptr = ptr->next;
+    }
+    cout << "pos while" << endl;
+    NodoAcidente *aux;
+
+    for (int i = 0; i < qtdacidentes - 1; i++)
+        for (int j = i + 1; j < qtdacidentes; j++)
+        {
+            aux = maiores[i];
+            cout << "preif" << endl;
+            if (maiores[j]->nVeiculos > maiores[i]->nVeiculos)
+            {
+                cout << "dentro if antes ordem" << endl;
+                maiores[i] = maiores[j];
+                cout << "primeiro" << endl;
+                maiores[j] = aux;
+                cout << "segundo" << endl;
+            }
+        }
+
+    stringstream ss;
+    for (int i = 0; i < 10; i++)
+    {
+        ss << maiores[i]->toString() << endl;
+    }
+    return ss.str();
 }

@@ -20,11 +20,14 @@ public:
     int num_acid_moto();
     bool contains(string element);
     NodoAcidente* get(int index);
+    NodoAcidente* getHead();
     string dia_mais_acid();
     string toString();
     void add(string dia, int nVeiculos, int nMotos, string TipoAcidente);
     NodoAcidente* removeByIndex(int index);
     bool remove(string TipoAcidente);
+    int getnVeiculos();
+    
 };
 
 #endif

@@ -127,7 +127,12 @@ void LinkedListOfAcidente::add(string dia, int nVeiculos, int nMotos, string Tip
  * @return o elemento da posicao especificada
  * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
  */
-
+NodoAcidente *LinkedListOfAcidente::getHead(){
+    if(head==NULL){
+        throw IndexOutOfBoundsException;
+    }
+    return head;
+}
 NodoAcidente *LinkedListOfAcidente::get(int index)
 {
     if ((index < 0) || (index >= count))
@@ -334,4 +339,13 @@ string LinkedListOfAcidente::dia_mais_acid(){
         }
     }
     return 0;
+}
+int LinkedListOfAcidente::getnVeiculos(){
+    if(head==NULL){
+        return 0;
+    }
+    NodoAcidente* ptr = head;
+
+    return ptr->nVeiculos; 
+
 }

@@ -40,6 +40,8 @@ public:
     NodoSTR* EncontraAnterior(NodoSTR* ptr);
     void removeMaiores(string n);
     void RemoveAcidentes(string tipo);
+    string Maiores20();
+    string maioresacidentes10();
     
 };
 
