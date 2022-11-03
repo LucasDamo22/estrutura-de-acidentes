@@ -750,9 +750,9 @@ string LinkedListOfString::dia_mais_acidentes(string rua)
     {
         if (ptr->element == aux)
         {
-            cout << "teste do if";
-            string aux1 = ptr->AcidentesNaRua.dia_mais_acid();
-            return aux1;
+            stringstream ss;
+            ss<< "O dia da semana com mais acidentes é: " <<ptr->AcidentesNaRua.dia_mais_acid();
+            return ss.str();
         }
         ptr = ptr->next;
     }
@@ -765,7 +765,7 @@ string LinkedListOfString::Maiores20()
     {
         return "Lista Vazia";
     }
-    cout << "pos if head" << endl;
+    //cout << "pos if head" << endl;
     NodoSTR *ptr;
     ptr = head;
     NodoSTR *maiores[count];
@@ -791,7 +791,7 @@ string LinkedListOfString::Maiores20()
     stringstream ss1;
     for (int z = 0; z < 20; z++)
     {
-        ss1 << maiores[z]->element << endl;
+        ss1 << maiores[z]->element << "    ||    Número de acidentes: "<<maiores[z]->AcidentesNaRua.size()<< endl <<endl;
         ;
     }
     return ss1.str();
