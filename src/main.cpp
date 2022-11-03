@@ -203,23 +203,18 @@ void LeArquivo(const char *filename)
 
 int main(int argc, const char * argv[]) {
     
-    //LeArquivo("DezLinhas.csv");
-    //LeArquivo("./data/cat_vitimas2.csv");
+    LeArquivo("./data/PequenoComRepeticoes.csv");
     
-     LeArquivo("./data/PequenoComRepeticoes.csv");
-    
-    //ListaDeRuas.RemoveAcidentes("ABALROAMENTO");
-    ListaDeRuas.ImprimeLista();
-    //cout<<"numero de acidentes com moto"<<ListaDeRuas.num_acid_motos();
+    cout<<"TERMINAL DE CONSULTA DE ACIDENTES \n DIGITE 1 PARA IMPRIMIR A LISTA \n 2 PARA LISTAR QUAIS OS 20 LOGRADOUROS COM MAIOR NUMERO DE ACIDENTES";
    
+    cout<<"DIGITE 1 PARA IMPRIMIR A LISTA"<<endl;
+    cout<<"2 PARA LISTAR QUAIS OS 20 LOGRADOUROS COM MAIOR NUMERO DE ACIDENTES"<<endl;
+    cout<<"DIGITE 3 PARA REMOVER UM TIPO DE ACIDENTE"<<endl;
+    cout<<
     
-    string a = "R PROF CRISTIANO FISCHER";
     
     
-    //cout<<ListaDeRuas.dia_mais_acidentes(a)<<endl;
     
-    //cout<< ListaDeRuas.Maiores20();
-    cout<< ListaDeRuas.maioresacidentes10();
     
     return 0;
 }

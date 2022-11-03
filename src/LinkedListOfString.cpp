@@ -806,55 +806,60 @@ string LinkedListOfString::maioresacidentes10()
     int qtdacidentes = 0;
     NodoSTR *ptr;
     ptr = head;
-    cout << "1" << endl;
+    
     for (int i = 0; i < count; i++)
     {
 
         qtdacidentes += ptr->AcidentesNaRua.size();
         ptr = ptr->next;
     }
-    cout << qtdacidentes << endl;
+    
     ptr = head;
-    cout << "2" << endl;
+    
     NodoAcidente *maiores[qtdacidentes];
     NodoAcidente *ptrInterno;
+    int i = 0;
     while (ptr != NULL)
     {
-        cout << "init while" << endl;
+        
         ptrInterno = ptr->AcidentesNaRua.getHead();
-        cout << "get head da lista de acid" << endl;
-        int i = 0;
+        
+
         while (ptrInterno != NULL)
         {
             maiores[i] = ptrInterno;
-            cout << "atribuicao de tds acidentes" << endl;
+            
             ptrInterno = ptrInterno->next;
+            
             i++;
         }
         ptr = ptr->next;
     }
-    cout << "pos while" << endl;
+    
     NodoAcidente *aux;
-
+    cout << maiores[1]->toString();
     for (int i = 0; i < qtdacidentes - 1; i++)
         for (int j = i + 1; j < qtdacidentes; j++)
         {
             aux = maiores[i];
-            cout << "preif" << endl;
+            
             if (maiores[j]->nVeiculos > maiores[i]->nVeiculos)
             {
-                cout << "dentro if antes ordem" << endl;
+                
                 maiores[i] = maiores[j];
-                cout << "primeiro" << endl;
+                
                 maiores[j] = aux;
-                cout << "segundo" << endl;
+                
             }
         }
 
     stringstream ss;
+    
     for (int i = 0; i < 10; i++)
     {
-        ss << maiores[i]->toString() << endl;
+        
+
+        ss << maiores[i]->toString();
     }
     return ss.str();
 }
